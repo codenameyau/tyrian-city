@@ -20,6 +20,11 @@
   "mocha": true,
   "globals": {
     "THREE": true,
-    "Playground": true
+    "Playground": true,
+    "Unit",
+    "Cell",
+    "Layer",
+    "Zone",
+    "TyrianCity": true
   }
 }

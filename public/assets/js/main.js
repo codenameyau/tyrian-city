@@ -2,6 +2,9 @@
 
 (function() {
 
+  // Initialize city logic.
+  var city = new TyrianCity();
+
   // Initialize playground.
   var playground = new Playground();
   playground.enableGrid(40, 5);
@@ -15,13 +18,5 @@
   lightSource.position.set(0, 20, 70);
   playground.scene.add(lightAmbient);
   playground.scene.add(lightSource);
-
-  // Box example.
-  var size = 10;
-  var material = new THREE.MeshLambertMaterial();
-  var geometry = new THREE.BoxGeometry(size, size, size);
-  geometry.applyMatrix( new THREE.Matrix4().makeTranslation(0, size/2, 0) );
-  var boxMesh = new THREE.Mesh(geometry, material);
-  playground.scene.add(boxMesh);
 
 })();
