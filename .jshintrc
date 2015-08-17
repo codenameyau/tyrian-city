@@ -21,10 +21,7 @@
   "globals": {
     "THREE": true,
     "Playground": true,
-    "Unit",
-    "Cell",
-    "Layer",
-    "Zone",
-    "TyrianCity": true
+    "TyrianCity": true,
+    "PubTest": true
   }
 }
