@@ -1,0 +1,30 @@
+{
+  "name": "tyrian-city",
+  "version": "1.0.0",
+  "description": "Procedural city named after a shade of purple",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codenameyau/tyrian-city.git"
+  },
+  "keywords": [
+    "procedural",
+    "city",
+    "generation"
+  ],
+  "author": "Jorge Yau <codenameyau@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/codenameyau/tyrian-city/issues"
+  },
+  "homepage": "https://github.com/codenameyau/tyrian-city#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "mocha": "^2.2.5"
+  }
+}
