@@ -74,6 +74,7 @@ class CityMap {
   createLayer(name) {
     if (!this.hasLayer(name)) {
       this.layers[name] = new CityLayer(this, name);
+      return this.getLayer(name);
     }
   }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import chai from 'chai';
-import { CityCell, CityMap, CityLayer } from '../public/tyrian-city/core.js';
+import { CityCell, CityLayer, CityMap } from '../public/tyrian-city/core.js';
 let assert = chai.assert;
 
 
@@ -41,7 +41,7 @@ describe('CityLayer', () => {
     let layer = new CityLayer(map);
 
     it('should always define a CityMap instance for the layer', () => {
-      assert.isTrue(layer.map instanceof CityMap);
+      assert.instanceOf(layer.map, CityMap);
     });
   });
 
@@ -52,10 +52,10 @@ describe('CityLayer', () => {
     it('should populate the grid with length x width CityCells', () => {
       assert.strictEqual(layer.grid.length, length);
       assert.strictEqual(layer.grid[0].length, width);
-      assert.isTrue(layer.grid[0][0] instanceof CityCell);
+      assert.instanceOf(layer.grid[0][0], CityCell);
     });
 
-    it('should have cells with their x and y positions defined', () => {
+    it('should have cells with their correct positions defined', () => {
       for (let i=0; i<length; i++) {
         for (let j=0; j<width; j++) {
           assert.strictEqual(layer.grid[i][j].position.x, i);
@@ -64,7 +64,7 @@ describe('CityLayer', () => {
       }
     });
 
-    it('should reset the previous grid', () => {
+    it('should reset the previous grid when called', () => {
       let dummyContent = 'dummy';
       layer.grid[0][0].content = dummyContent;
       assert.strictEqual(layer.grid[0][0].content, dummyContent);
@@ -79,7 +79,7 @@ describe('CityLayer', () => {
 
     it('should retrieve the cell content at the given position', () => {
       let cell = layer.getCell(0, 0);
-      assert.isTrue(cell instanceof CityCell);
+      assert.instanceOf(cell, CityCell);
       assert.strictEqual(cell.content, null);
     });
   });
@@ -103,9 +103,10 @@ describe('CityLayer', () => {
 * TyrianCity Test: CityMap
 *********************************************************************/
 describe('CityMap', () => {
+  let length = 4, width = 5, name = 'Test Map';
+  let layerName = 'test';
 
   describe('constructor', () => {
-    let length = 4, width = 5, name = 'Test Map';
     let map = new CityMap(length, width, name);
 
     it('should set the properties of the CityMap', () => {
@@ -113,11 +114,37 @@ describe('CityMap', () => {
       assert.strictEqual(map.width, width);
       assert.strictEqual(map.name, name);
     });
+  });
 
-    it('should have an interface to access layers', () => {
+  describe('.createLayer()', () => {
+    let map = new CityMap(length, width, name);
+    let layer = map.createLayer(layerName);
 
+    it('should create the layer as an instance of CityLayer', () => {
+      assert.instanceOf(layer, CityLayer);
+      assert.property(map.layers, layerName);
     });
+  });
 
+  describe('.hasLayer()', () => {
+    let map = new CityMap(length, width, name);
+    map.createLayer(layerName);
+
+    it('should return whether or not the map has the layer', () => {
+      assert.isTrue(map.hasLayer(layerName));
+      assert.isFalse(map.hasLayer('hallo'));
+    });
+  });
+
+  describe('.deleteLayer()', () => {
+    let map = new CityMap(length, width, name);
+    map.createLayer(layerName);
+    assert.isTrue(map.hasLayer(layerName));
+
+    it('should delete the defined property for the layer', () => {
+      map.deleteLayer(layerName);
+      assert.isFalse(map.hasLayer(layerName));
+    });
   });
 
 });
