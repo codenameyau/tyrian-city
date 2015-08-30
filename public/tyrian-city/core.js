@@ -19,6 +19,10 @@ class CityCell {
     return this.content === null;
   }
 
+  update(content) {
+    this.content = content;
+  }
+
   clear() {
     this.content = null;
   }
@@ -53,7 +57,7 @@ class CityLayer {
   }
 
   updateCell(x, y, content) {
-    this.grid[x][y].content = content;
+    this.grid[x][y].update(content);
   }
 
   clearCell(x, y) {

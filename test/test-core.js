@@ -27,6 +27,26 @@ describe('CityCell', () => {
     });
   });
 
+  describe('.update()', () => {
+    it('should update the content of the cell', () => {
+      let cell = new CityCell();
+      let content = 'hello';
+      assert.isNull(cell.content);
+      cell.update(content);
+      assert.strictEqual(cell.content, content);
+    });
+  });
+
+  describe('.clear()', () => {
+    it('should set the content of the cell to null', () => {
+      let cell = new CityCell();
+      cell.update('hello');
+      assert.isNotNull(cell.content);
+      cell.clear();
+      assert.isNull(cell.content);
+    });
+  });
+
 });
 
 
