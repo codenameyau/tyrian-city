@@ -31,31 +31,6 @@ describe('CityCell', () => {
 
 
 /********************************************************************
-* TyrianCity Test: CityMap
-*********************************************************************/
-describe('CityMap', () => {
-
-  describe('constructor', () => {
-    let length = 20, width = 25, name = 'Hello World';
-    let map = new CityMap(length, width, name);
-
-    it('should set the correct length of the CityMap', () => {
-      assert.strictEqual(map.length, length);
-    });
-
-    it('should set the correct width of the CityMap', () => {
-      assert.strictEqual(map.width, width);
-    });
-
-    it('should set the correct name of the CityMap', () => {
-      assert.strictEqual(map.name, name);
-    });
-  });
-
-});
-
-
-/********************************************************************
 * TyrianCity Test: CityLayer
 *********************************************************************/
 describe('CityLayer', () => {
@@ -63,16 +38,14 @@ describe('CityLayer', () => {
 
   describe('constructor', () => {
     let map = new CityMap(length, width);
-    let layerA = new CityLayer();
-    let layerB = new CityLayer(map);
+    let layer = new CityLayer(map);
 
     it('should always define a CityMap instance for the layer', () => {
-      assert.isTrue(layerA.map instanceof CityMap);
-      assert.isTrue(layerB.map instanceof CityMap);
+      assert.isTrue(layer.map instanceof CityMap);
     });
   });
 
-  describe('.resetGrid()', () => {
+  describe('.createGrid()', () => {
     let map = new CityMap(length, width);
     let layer = new CityLayer(map);
 
@@ -95,7 +68,7 @@ describe('CityLayer', () => {
       let dummyContent = 'dummy';
       layer.grid[0][0].content = dummyContent;
       assert.strictEqual(layer.grid[0][0].content, dummyContent);
-      layer.resetGrid();
+      layer.createGrid();
       assert.strictEqual(layer.grid[0][0].content, null);
     });
   });
@@ -121,6 +94,30 @@ describe('CityLayer', () => {
       layer.updateCell(0, 0, dummyContent);
       assert.strictEqual(cell.content, dummyContent);
     });
+  });
+
+});
+
+
+/********************************************************************
+* TyrianCity Test: CityMap
+*********************************************************************/
+describe('CityMap', () => {
+
+  describe('constructor', () => {
+    let length = 4, width = 5, name = 'Test Map';
+    let map = new CityMap(length, width, name);
+
+    it('should set the properties of the CityMap', () => {
+      assert.strictEqual(map.length, length);
+      assert.strictEqual(map.width, width);
+      assert.strictEqual(map.name, name);
+    });
+
+    it('should have an interface to access layers', () => {
+
+    });
+
   });
 
 });
