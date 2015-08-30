@@ -11,6 +11,18 @@ class CityCell {
     this.layer = layer;
   }
 
+  isFilled() {
+    return this.content !== null;
+  }
+
+  isEmpty() {
+    return this.content === null;
+  }
+
+  clear() {
+    this.content = null;
+  }
+
 }
 
 
@@ -45,7 +57,7 @@ class CityLayer {
   }
 
   clearCell(x, y) {
-    this.grid[x][y].content = null;
+    this.grid[x][y].clear();
   }
 
 }

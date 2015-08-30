@@ -82,6 +82,11 @@ describe('CityLayer', () => {
       assert.instanceOf(cell, CityCell);
       assert.strictEqual(cell.content, null);
     });
+
+    it('should have an instance of CityLayer for its layer', () => {
+      let cell = layer.getCell(0, 0);
+      assert.instanceOf(cell.layer, CityLayer);
+    });
   });
 
   describe('.updateCell()', () => {
