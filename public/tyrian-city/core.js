@@ -49,6 +49,14 @@ class CityLayer {
     }
   }
 
+  getCell(x, y) {
+    return this.grid[x][y];
+  }
+
+  updateCell(x, y, content) {
+    this.grid[x][y].content = content;
+  }
+
 }
 
 

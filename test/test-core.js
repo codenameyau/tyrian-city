@@ -59,20 +59,20 @@ describe('CityMap', () => {
 * TyrianCity Test: CityLayer
 *********************************************************************/
 describe('CityLayer', () => {
+  let length = 3, width = 4;
 
   describe('constructor', () => {
-    let name = 'Demo Layer';
-    let map = new CityMap(4, 4);
-    let layer = new CityLayer(map, name);
+    let map = new CityMap(length, width);
+    let layerA = new CityLayer();
+    let layerB = new CityLayer(map);
 
-    it('should have a define the properties of the layer', () => {
-      assert.isTrue(layer.map instanceof CityMap);
-      assert.strictEqual(layer.name, name);
+    it('should always define a CityMap instance for the layer', () => {
+      assert.isTrue(layerA.map instanceof CityMap);
+      assert.isTrue(layerB.map instanceof CityMap);
     });
   });
 
   describe('.resetGrid()', () => {
-    let length = 3, width = 4;
     let map = new CityMap(length, width);
     let layer = new CityLayer(map);
 
@@ -97,6 +97,29 @@ describe('CityLayer', () => {
       assert.strictEqual(layer.grid[0][0].content, dummyContent);
       layer.resetGrid();
       assert.strictEqual(layer.grid[0][0].content, null);
+    });
+  });
+
+  describe('.getCell()', () => {
+    let map = new CityMap(length, width);
+    let layer = new CityLayer(map);
+
+    it('should retrieve the cell content at the given position', () => {
+      let cell = layer.getCell(0, 0);
+      assert.isTrue(cell instanceof CityCell);
+      assert.strictEqual(cell.content, null);
+    });
+  });
+
+  describe('.updateCell()', () => {
+    let map = new CityMap(length, width);
+    let layer = new CityLayer(map);
+    let dummyContent = 'dummy';
+
+    it('should set the cell content at the given position', () => {
+      let cell = layer.getCell(0, 0);
+      layer.updateCell(0, 0, dummyContent);
+      assert.strictEqual(cell.content, dummyContent);
     });
   });
 
