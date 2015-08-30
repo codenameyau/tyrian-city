@@ -145,7 +145,7 @@ describe('CityMap', () => {
     let map = new CityMap(length, width, name);
     let layer = map.createLayer(layerName);
 
-    it('should create the layer as an instance of CityLayer', () => {
+    it('should create a new CityLayer instance inside layers', () => {
       assert.instanceOf(layer, CityLayer);
       assert.property(map.layers, layerName);
     });
@@ -166,7 +166,7 @@ describe('CityMap', () => {
     map.createLayer(layerName);
     assert.isTrue(map.hasLayer(layerName));
 
-    it('should delete the defined property for the layer', () => {
+    it('should delete the defined layer for the map', () => {
       map.deleteLayer(layerName);
       assert.isFalse(map.hasLayer(layerName));
     });
