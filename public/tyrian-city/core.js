@@ -3,7 +3,7 @@
 /********************************************************************
 * TyrianCity Core: CityCell
 *********************************************************************/
-class CityCell {
+export class CityCell {
 
   constructor(x=0, y=0, content=null, layer=null) {
     this.position = { x: x, y: y };
@@ -33,7 +33,7 @@ class CityCell {
 /********************************************************************
 * TyrianCity Core: CityLayer
 *********************************************************************/
-class CityLayer {
+export class CityLayer {
 
   constructor(map, name='Layer') {
     this.map = map;
@@ -70,7 +70,7 @@ class CityLayer {
 /********************************************************************
 * TyrianCity Core: CityMap
 *********************************************************************/
-class CityMap {
+export class CityMap {
 
   constructor(length, width, name='Tyrian City') {
     this.length = Number.isInteger(length) ? length : 100;
@@ -101,13 +101,3 @@ class CityMap {
   }
 
 }
-
-
-/********************************************************************
-* TyrianCity Core: Exports
-*********************************************************************/
-module.exports = {
-  CityCell: CityCell,
-  CityLayer: CityLayer,
-  CityMap: CityMap,
-};
