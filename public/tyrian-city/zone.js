@@ -1,16 +1,27 @@
 'use strict';
 
 /********************************************************************
-* TyrianCity Core: Zone
+* TyrianCity Zone: CityZone
 *********************************************************************/
-function Zone() {
-  this.type = null;
-}
+export class CityZone {
 
-Zone.prototype.types = [
-  'residential',
-  'commercial',
-  'industrial',
-  'street',
-  'park',
-];
+  constructor(zone) {
+    this.zone = this.allocate(zone);
+    this.set = new Set([
+        'street',
+        'residential',
+        'commercial',
+      ]);
+  }
+
+  allocate(zone) {
+    if (this.set.has(zone)) {
+      this.zone = zone;
+    }
+  }
+
+  isStreet() {
+    return this.zone === 'street';
+  }
+
+}
