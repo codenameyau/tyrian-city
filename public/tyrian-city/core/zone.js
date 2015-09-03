@@ -1,9 +1,9 @@
 'use strict';
 
 /********************************************************************
-* TyrianCity Zone: CityZone
+* TyrianCity Core: CityZone
 *********************************************************************/
-export class CityZone {
+export default class CityZone {
 
   constructor(zone) {
     this.zone = this.allocate(zone);
@@ -20,8 +20,8 @@ export class CityZone {
     }
   }
 
-  isStreet() {
-    return this.zone === 'street';
+  isType(zone) {
+    return this.zone === zone;
   }
 
 }

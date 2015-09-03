@@ -4,7 +4,7 @@
   "description": "Procedural city named after a shade of purple",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

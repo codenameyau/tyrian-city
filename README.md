@@ -7,6 +7,7 @@ Procedural city with ES6
 Run mocha tests with babel.
 
 ```
+sudo npm install -g mocha babel
 npm install
-mocha --compilers js:babel/register
+mocha test
 ```
