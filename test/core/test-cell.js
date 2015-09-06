@@ -5,9 +5,6 @@ import CityCell from '../../public/tyrian-city/core/cell.js';
 let assert = chai.assert;
 
 
-/********************************************************************
-* TyrianCity Test: CityCell
-*********************************************************************/
 describe('CityCell', () => {
 
   describe('constructor', () => {

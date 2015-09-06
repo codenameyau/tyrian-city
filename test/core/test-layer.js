@@ -7,9 +7,6 @@ import CityMap from '../../public/tyrian-city/core/map.js';
 let assert = chai.assert;
 
 
-/********************************************************************
-* TyrianCity Test: CityLayer
-*********************************************************************/
 describe('CityLayer', () => {
   let length = 3, width = 4;
 

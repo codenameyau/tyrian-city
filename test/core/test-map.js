@@ -6,9 +6,6 @@ import CityMap from '../../public/tyrian-city/core/map.js';
 let assert = chai.assert;
 
 
-/********************************************************************
-* TyrianCity Test: CityMap
-*********************************************************************/
 describe('CityMap', () => {
   let length = 4, width = 5, name = 'Test Map';
   let layerName = 'test';

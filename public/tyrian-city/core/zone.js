@@ -1,8 +1,6 @@
 'use strict';
 
-/********************************************************************
-* TyrianCity Core: CityZone
-*********************************************************************/
+
 export default class CityZone {
 
   constructor(zone) {
@@ -20,7 +18,7 @@ export default class CityZone {
     }
   }
 
-  isType(zone) {
+  is(zone) {
     return this.zone === zone;
   }
 

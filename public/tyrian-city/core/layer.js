@@ -2,9 +2,7 @@
 
 import CityCell from './cell.js';
 
-/********************************************************************
-* TyrianCity Core: CityLayer
-*********************************************************************/
+
 export default class CityLayer {
 
   constructor(map, name='Layer') {

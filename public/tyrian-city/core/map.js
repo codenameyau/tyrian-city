@@ -2,9 +2,7 @@
 
 import CityLayer from './layer.js';
 
-/********************************************************************
-* TyrianCity Core: CityMap
-*********************************************************************/
+
 export default class CityMap {
 
   constructor(length, width, name='Tyrian City') {

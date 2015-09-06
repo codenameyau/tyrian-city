@@ -1,8 +1,6 @@
 'use strict';
 
-/********************************************************************
-* TyrianCity Core: CityCell
-*********************************************************************/
+
 export default class CityCell {
 
   constructor(x=0, y=0, content=null, layer=null) {
