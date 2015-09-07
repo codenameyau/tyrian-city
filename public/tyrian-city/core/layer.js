@@ -9,10 +9,11 @@ export default class CityLayer {
     this.map = map;
     this.name = name;
     this.grid = null;
-    this.resetGrid();
+    this.reset();
   }
 
-  resetGrid() {
+
+  reset() {
     this.grid = [];
     for (let i=0; i<this.map.length; i++) {
       this.grid.push([]);
@@ -22,17 +23,21 @@ export default class CityLayer {
     }
   }
 
+
   getCell(x, y) {
     return this.grid[x][y];
   }
+
 
   getCellContent(x, y) {
     return this.grid[x][y].content;
   }
 
+
   updateCell(x, y, content) {
     this.grid[x][y].update(content);
   }
+
 
   clearCell(x, y) {
     this.grid[x][y].clear();

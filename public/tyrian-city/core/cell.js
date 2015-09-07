@@ -9,17 +9,21 @@ export default class CityCell {
     this.layer = layer;
   }
 
+
   isFilled() {
     return this.content !== null;
   }
+
 
   isEmpty() {
     return this.content === null;
   }
 
+
   update(content) {
     this.content = content;
   }
+
 
   clear() {
     this.content = null;

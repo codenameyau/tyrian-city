@@ -12,13 +12,16 @@ export default class CityMap {
     this.layers = {};
   }
 
+
   getLayer(name) {
     return this.layers[name];
   }
 
+
   hasLayer(name) {
     return this.getLayer(name) instanceof CityLayer;
   }
+
 
   createLayer(name) {
     if (!this.hasLayer(name)) {
@@ -26,6 +29,7 @@ export default class CityMap {
       return this.getLayer(name);
     }
   }
+
 
   deleteLayer(name) {
     if (this.hasLayer(name)) {

@@ -19,7 +19,7 @@ describe('CityLayer', () => {
     });
   });
 
-  describe('.resetGrid()', () => {
+  describe('.reset()', () => {
     let layer = new CityLayer(map);
 
     it('should populate the grid with length x width CityCells', () => {
@@ -41,7 +41,7 @@ describe('CityLayer', () => {
       let dummyContent = 'dummy';
       layer.grid[0][0].content = dummyContent;
       assert.strictEqual(layer.grid[0][0].content, dummyContent);
-      layer.resetGrid();
+      layer.reset();
       assert.strictEqual(layer.grid[0][0].content, null);
     });
   });
