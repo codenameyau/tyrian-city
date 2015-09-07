@@ -13,8 +13,9 @@ export default class StreetGenerator {
   }
 
 
-  straightPath(x1, y1, x2, y2) {
-    // Swap values to ensure path symmetry.
+  swapPositions(x1, y1, x2, y2) {
+    // Ensures that path is created regardless of which pair is
+    // the start and end coordinates.
     if (x2 < x1) {
       [x1, x2] = [x2, x1];
     }
@@ -22,6 +23,13 @@ export default class StreetGenerator {
     if (y2 < y1) {
       [y1, y2] = [y2, y1];
     }
+
+    return [x1, y1, x2, y2];
+  }
+
+
+  straightPath(x1, y1, x2, y2) {
+    [x1, y1, x2, y2] = this.swapPositions(x1, y1, x2, y2);
 
     // Branch path based on start and end positions.
     let verticalPath = (x2 - x1) === 0;
@@ -49,7 +57,16 @@ export default class StreetGenerator {
 
 
   perimeterPath(x1, y1, x2, y2) {
+    [x1, y1, x2, y2] = this.swapPositions(x1, y1, x2, y2);
 
+    for (let x=x1; x<=x2; x++) {
+      for (let y=y1; y<=y2; y++) {
+        // If path is in (left or right) or (top or bottom)
+        if ((x === x1 || x === x2) || (y === y1 || y === y2)) {
+          this.addStreet(x, y);
+        }
+      }
+    }
   }
 
 
@@ -58,12 +75,7 @@ export default class StreetGenerator {
   }
 
 
-  tPath(x, y, extension) {
-
-  }
-
-
-  xPath(x, y, extension) {
+  intersectionPath(x, y, length) {
 
   }
 

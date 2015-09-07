@@ -9,11 +9,10 @@ let assert = chai.assert;
 describe('StreetGenerator', () => {
   let size = 6;
   let map = new CityMap(size, size);
+  let layer = map.createLayer('street');
+  let generateStreet = new StreetGenerator(layer);
 
   describe('.straightPath()', () => {
-    let layer = map.createLayer('street');
-    let generateStreet = new StreetGenerator(layer);
-
     describe('horizontal', () => {
       let x1 = 1, y1 = 1;
       let x2 = 3, y2 = 1;
@@ -104,28 +103,33 @@ describe('StreetGenerator', () => {
 
 
   describe('.perimeterPath', () => {
-    let layer = map.createLayer('street');
-    let generateStreet = new StreetGenerator(layer);
+    let x1 = 1, y1 = 1;
+    let x2 = 3, y2 = 3;
 
-    it('should create a perimeter from start to end', () => {
-      let x1 = 1, y1 = 1;
-      let x2 = 3, y2 = 3;
-      generateStreet.perimeterPath(x1, y1, x2, y2);
+    let testPerimeterPath = () => {
       assert.isNotNull(layer.getCellContent(1, 1));
       assert.isNotNull(layer.getCellContent(1, 2));
       assert.isNotNull(layer.getCellContent(1, 3));
+      assert.isNotNull(layer.getCellContent(2, 1));
+      assert.isNotNull(layer.getCellContent(2, 3));
       assert.isNotNull(layer.getCellContent(3, 1));
       assert.isNotNull(layer.getCellContent(3, 2));
-      assert.isNotNull(layer.getCellContent(3, 3));
-      assert.isNotNull(layer.getCellContent(1, 1));
-      assert.isNotNull(layer.getCellContent(2, 1));
-      assert.isNotNull(layer.getCellContent(3, 1));
-      assert.isNotNull(layer.getCellContent(1, 3));
-      assert.isNotNull(layer.getCellContent(2, 3));
       assert.isNotNull(layer.getCellContent(3, 3));
       assert.isNull(layer.getCellContent(0, 0));
       assert.isNull(layer.getCellContent(2, 2));
       assert.isNull(layer.getCellContent(4, 4));
+    };
+
+    it('should create a perimeter from start to end', () => {
+      layer.reset();
+      generateStreet.perimeterPath(x1, y1, x2, y2);
+      testPerimeterPath();
+    });
+
+    it('should create a perimeter if reversed', () => {
+      layer.reset();
+      generateStreet.perimeterPath(x2, y2, x1, y1);
+      testPerimeterPath();
     });
   });
 
