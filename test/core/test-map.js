@@ -10,7 +10,7 @@ describe('CityMap', () => {
   let length = 4, width = 5, name = 'Test Map';
   let layerName = 'test';
 
-  describe('constructor', () => {
+  describe('.constructor()', () => {
     let map = new CityMap(length, width, name);
 
     it('should set the properties of the CityMap', () => {

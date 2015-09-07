@@ -7,7 +7,7 @@ let assert = chai.assert;
 
 describe('CityCell', () => {
 
-  describe('constructor', () => {
+  describe('.constructor()', () => {
     it('should set the default position and content if no args', () => {
       let cell = new CityCell();
       assert.strictEqual(cell.position.x, 0);

@@ -9,9 +9,9 @@ let assert = chai.assert;
 
 describe('CityLayer', () => {
   let length = 3, width = 4;
+  let map = new CityMap(length, width);
 
-  describe('constructor', () => {
-    let map = new CityMap(length, width);
+  describe('.constructor()', () => {
     let layer = new CityLayer(map);
 
     it('should always define a CityMap instance for the layer', () => {
@@ -19,8 +19,7 @@ describe('CityLayer', () => {
     });
   });
 
-  describe('.createGrid()', () => {
-    let map = new CityMap(length, width);
+  describe('.resetGrid()', () => {
     let layer = new CityLayer(map);
 
     it('should populate the grid with length x width CityCells', () => {
@@ -42,16 +41,15 @@ describe('CityLayer', () => {
       let dummyContent = 'dummy';
       layer.grid[0][0].content = dummyContent;
       assert.strictEqual(layer.grid[0][0].content, dummyContent);
-      layer.createGrid();
+      layer.resetGrid();
       assert.strictEqual(layer.grid[0][0].content, null);
     });
   });
 
   describe('.getCell()', () => {
-    let map = new CityMap(length, width);
     let layer = new CityLayer(map);
 
-    it('should retrieve the cell content at the given position', () => {
+    it('should retrieve the cell instance at the given position', () => {
       let cell = layer.getCell(0, 0);
       assert.instanceOf(cell, CityCell);
       assert.strictEqual(cell.content, null);
@@ -63,8 +61,16 @@ describe('CityLayer', () => {
     });
   });
 
+  describe('.getCellContent()', () => {
+    let layer = new CityLayer(map);
+
+    it('should retrieve the cell content at the given position', () => {
+      let cellContent = layer.getCellContent(0, 0);
+      assert.strictEqual(cellContent, null);
+    });
+  });
+
   describe('.updateCell()', () => {
-    let map = new CityMap(length, width);
     let layer = new CityLayer(map);
     let dummyContent = 'dummy';
 
