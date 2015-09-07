@@ -7,33 +7,27 @@ let assert = chai.assert;
 
 
 describe('StreetGenerator', () => {
-  let size = 5;
+  let size = 6;
   let map = new CityMap(size, size);
-  let layer = map.createLayer('street');
-  let generateStreet = new StreetGenerator(layer);
-
-  describe('.constructor()', () => {
-    it('should create a property called layer', () => {
-      assert.property(generateStreet, 'layer');
-    });
-  });
 
   describe('.straightPath()', () => {
+    let layer = map.createLayer('street');
+    let generateStreet = new StreetGenerator(layer);
 
     describe('horizontal', () => {
       let x1 = 1, y1 = 1;
       let x2 = 3, y2 = 1;
 
       let testHorizontalPath = () => {
-        assert.isNotNull(layer.getCell(1, 1).content);
-        assert.isNotNull(layer.getCell(2, 1).content);
-        assert.isNotNull(layer.getCell(3, 1).content);
-        assert.isNull(layer.getCell(0, 0).content);
-        assert.isNull(layer.getCell(1, 2).content);
-        assert.isNull(layer.getCell(2, 2).content);
-        assert.isNull(layer.getCell(2, 3).content);
-        assert.isNull(layer.getCell(3, 2).content);
-        assert.isNull(layer.getCell(4, 4).content);
+        assert.isNotNull(layer.getCellContent(1, 1));
+        assert.isNotNull(layer.getCellContent(2, 1));
+        assert.isNotNull(layer.getCellContent(3, 1));
+        assert.isNull(layer.getCellContent(0, 0));
+        assert.isNull(layer.getCellContent(1, 2));
+        assert.isNull(layer.getCellContent(2, 2));
+        assert.isNull(layer.getCellContent(2, 3));
+        assert.isNull(layer.getCellContent(3, 2));
+        assert.isNull(layer.getCellContent(4, 4));
       };
 
       it('should create a path filled with a street', () => {
@@ -54,15 +48,15 @@ describe('StreetGenerator', () => {
       let x2 = 1, y2 = 3;
 
       let testVerticalPath = () => {
-        assert.isNotNull(layer.getCell(1, 1).content);
-        assert.isNotNull(layer.getCell(1, 2).content);
-        assert.isNotNull(layer.getCell(1, 3).content);
-        assert.isNull(layer.getCell(0, 0).content);
-        assert.isNull(layer.getCell(2, 1).content);
-        assert.isNull(layer.getCell(2, 2).content);
-        assert.isNull(layer.getCell(2, 3).content);
-        assert.isNull(layer.getCell(3, 1).content);
-        assert.isNull(layer.getCell(4, 4).content);
+        assert.isNotNull(layer.getCellContent(1, 1));
+        assert.isNotNull(layer.getCellContent(1, 2));
+        assert.isNotNull(layer.getCellContent(1, 3));
+        assert.isNull(layer.getCellContent(0, 0));
+        assert.isNull(layer.getCellContent(2, 1));
+        assert.isNull(layer.getCellContent(2, 2));
+        assert.isNull(layer.getCellContent(2, 3));
+        assert.isNull(layer.getCellContent(3, 1));
+        assert.isNull(layer.getCellContent(4, 4));
       };
 
       it('should create a path filled with a street', () => {
@@ -83,15 +77,15 @@ describe('StreetGenerator', () => {
       let x2 = 3, y2 = 3;
 
       let testDiagonalPath = () => {
-        assert.isNotNull(layer.getCell(1, 1).content);
-        assert.isNotNull(layer.getCell(2, 2).content);
-        assert.isNotNull(layer.getCell(3, 3).content);
-        assert.isNull(layer.getCell(0, 0).content);
-        assert.isNull(layer.getCell(1, 2).content);
-        assert.isNull(layer.getCell(2, 1).content);
-        assert.isNull(layer.getCell(2, 3).content);
-        assert.isNull(layer.getCell(3, 2).content);
-        assert.isNull(layer.getCell(4, 4).content);
+        assert.isNotNull(layer.getCellContent(1, 1));
+        assert.isNotNull(layer.getCellContent(2, 2));
+        assert.isNotNull(layer.getCellContent(3, 3));
+        assert.isNull(layer.getCellContent(0, 0));
+        assert.isNull(layer.getCellContent(1, 2));
+        assert.isNull(layer.getCellContent(2, 1));
+        assert.isNull(layer.getCellContent(2, 3));
+        assert.isNull(layer.getCellContent(3, 2));
+        assert.isNull(layer.getCellContent(4, 4));
       };
 
       it('should create a path filled with a street', () => {
@@ -105,6 +99,33 @@ describe('StreetGenerator', () => {
         generateStreet.straightPath(x2, y2, x1, y1);
         testDiagonalPath();
       });
+    });
+  });
+
+
+  describe('.perimeterPath', () => {
+    let layer = map.createLayer('street');
+    let generateStreet = new StreetGenerator(layer);
+
+    it('should create a perimeter from start to end', () => {
+      let x1 = 1, y1 = 1;
+      let x2 = 3, y2 = 3;
+      generateStreet.perimeterPath(x1, y1, x2, y2);
+      assert.isNotNull(layer.getCellContent(1, 1));
+      assert.isNotNull(layer.getCellContent(1, 2));
+      assert.isNotNull(layer.getCellContent(1, 3));
+      assert.isNotNull(layer.getCellContent(3, 1));
+      assert.isNotNull(layer.getCellContent(3, 2));
+      assert.isNotNull(layer.getCellContent(3, 3));
+      assert.isNotNull(layer.getCellContent(1, 1));
+      assert.isNotNull(layer.getCellContent(2, 1));
+      assert.isNotNull(layer.getCellContent(3, 1));
+      assert.isNotNull(layer.getCellContent(1, 3));
+      assert.isNotNull(layer.getCellContent(2, 3));
+      assert.isNotNull(layer.getCellContent(3, 3));
+      assert.isNull(layer.getCellContent(0, 0));
+      assert.isNull(layer.getCellContent(2, 2));
+      assert.isNull(layer.getCellContent(4, 4));
     });
   });
 
