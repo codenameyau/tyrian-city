@@ -26,7 +26,7 @@ export default class StreetGenerator {
     // Branch path based on start and end positions.
     let verticalPath = (x2 - x1) === 0;
     let horizontalPath = (y2 - y1) === 0;
-    let diagonalPath = (x2 > x1 && y2 > y1);
+    let diagonalPath = (x1 === y1 && x2 === y2);
 
     if (verticalPath) {
       for (let y=y1; y<=y2; y++) {
