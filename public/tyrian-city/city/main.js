@@ -1,7 +1,8 @@
 'use strict';
 
 import CityMap from '../core/map.js';
-import * as generateStreet from '../generator/street.js';
+import StreetGenerator from '../generator/street.js';
+
 
 /********************************************************************
 * TyrianCity Main
@@ -9,7 +10,6 @@ import * as generateStreet from '../generator/street.js';
 let size = 4;
 let map = new CityMap(size, size);
 let streetLayer = map.createLayer('street');
-
-generateStreet.perimeter(streetLayer);
-
-// console.log(streetLayer.grid);
+let streetGenerator = new StreetGenerator(streetLayer);
+streetGenerator.perimeterPath(0, 0, 3, 3);
+console.log(streetLayer.grid);

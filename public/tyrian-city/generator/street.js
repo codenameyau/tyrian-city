@@ -70,12 +70,12 @@ export default class StreetGenerator {
   }
 
 
-  circularPath(x, y, radius) {
+  intersectionPath(x, y, extension) {
 
   }
 
 
-  intersectionPath(x, y, length) {
+  circularPath(x, y, radius) {
 
   }
 
