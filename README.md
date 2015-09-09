@@ -4,13 +4,22 @@ Procedural city with ES6
 
 ## Development
 
-To get started, run the following:
+To get started, you'll need the following global packages:
 ```
-sudo npm install -g mocha babel
+sudo npm install -g mocha babel gulp
+```
+
+Then install the local project packages:
+```
 npm install
 ```
 
-#### Gulp
+You can run tests with:
+```
+mocha test
+```
+
+### Gulp
 Gulp is used for the following:
 
 - Compiling ES6 to ES5 with Babel.
@@ -18,16 +27,8 @@ Gulp is used for the following:
 - Concatenation and minification.
 - Watching for code changes.
 
-Generate the build for `public/build` with:
+Generate a build in `public/build` with:
 
 ```
 gulp clean && gulp build
-```
-
-#### Mocha Tests
-
-Mocha is configured to run with Babel as found in `teest/mocha.opts`.
-
-```
-mocha test
 ```
