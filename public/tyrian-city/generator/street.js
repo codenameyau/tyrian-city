@@ -7,11 +7,9 @@ export default class StreetGenerator {
     this.layer = layer;
   }
 
-
   addStreet(x, y) {
     this.layer.updateCell(x, y, 'street');
   }
-
 
   swapPositions(x1, y1, x2, y2) {
     // Ensures that path is created regardless of which pair is
@@ -26,7 +24,6 @@ export default class StreetGenerator {
 
     return [x1, y1, x2, y2];
   }
-
 
   straightPath(x1, y1, x2, y2) {
     [x1, y1, x2, y2] = this.swapPositions(x1, y1, x2, y2);
@@ -55,7 +52,6 @@ export default class StreetGenerator {
     }
   }
 
-
   perimeterPath(x1, y1, x2, y2) {
     [x1, y1, x2, y2] = this.swapPositions(x1, y1, x2, y2);
 
@@ -69,11 +65,9 @@ export default class StreetGenerator {
     }
   }
 
-
   intersectionPath(x, y, extension) {
 
   }
-
 
   circularPath(x, y, radius) {
 
